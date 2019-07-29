@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bbb</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+		integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+  <app-root></app-root>
+	<script src="./assets/js/clock.js"></script>
+	<script src="./assets/js/toggle.js"></script>
+	<script src="./assets/js/modal.js"></script>
+	<script src="./assets/js/overlay.js"></script>
+	<script src="./assets/js/chart_modal.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', { packages: ['corechart', 'line'] });
+		google.charts.setOnLoadCallback(drawBasic);
+
+		function drawBasic() {
+
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'time');
+			data.addColumn('number', 'Entrées');
+			data.addColumn('number', 'Sorties');
+
+			data.addRows([
+				['8', 3, 4],
+				['9', 5, 6],
+				['10', 3, 8],
+				['11', 5, 1],
+				['12', 5, 4],
+				['13', 5, 7],
+				['14', 5, 9],
+				['15', 6, 4],
+				['16', 3, 7],
+				['17', 9, 8],
+				['18', 4, 9],
+				['19', 2, 1]
+			]);
+
+			var options = {
+				curveType: 'function',
+				legend: { textStyle: {color: 'white'}},
+				series: {
+					0: { color: 'green' },
+					1: { color: 'blue' }
+				},
+				width: 500,
+				height: 400,
+				chartArea: {
+					backgroundColor: {
+						fill: '#141414'
+					},
+				},
+				backgroundColor: {
+					fill: '#141414'
+				},
+				vAxis: {
+					gridlines: {
+						color: 'transparent'
+					},
+					baselineColor: 'none',
+					ticks: [],
+					textStyle: { color: '#FFF' },
+					baselineColor: 'none',
+					ticks: []
+				},
+				hAxis: {
+					textStyle: { color: '#FFF' }
+				}
+			};
+
+			var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+			chart.draw(data, options);
+		}
+	</script>
+<script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule></script><script src="polyfills-es5.js" nomodule></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule></script><script src="vendor-es2015.js" type="module"></script><script src="main-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule></script><script src="main-es5.js" nomodule></script></body>
+</html>
